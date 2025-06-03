@@ -1,24 +1,26 @@
-"use client";
+'use client'
 
-import Link from "next/link";
-import { useRef, useState } from "react";
-import { Button } from "@/components/ui/button";
-import CalendarioVisual from "@/components/CalendarioVisual";
-import GaleriaFlores from "@/components/CarruselFlores";
+import Link from "next/link"
+import { useRef, useState } from "react"
+import { Button } from "@/components/ui/button"
+import CalendarioVisual from "@/components/CalendarioVisual"
+import GaleriaFlores from "@/components/CarruselFlores"
+import CatalogoFlores from "@/components/CatalogoFlores"
+import FormularioSintomas from "@/components/FormularioSintomas"
 
 export default function HomePage() {
-  const [mostrarCalendario, setMostrarCalendario] = useState(false);
-  const calendarioRef = useRef<HTMLDivElement>(null);
+  const [mostrarCalendario, setMostrarCalendario] = useState(false)
+  const calendarioRef = useRef<HTMLDivElement>(null)
 
   const manejarClick = () => {
-    setMostrarCalendario(true);
+    setMostrarCalendario(true)
     setTimeout(() => {
-      calendarioRef.current?.scrollIntoView({ behavior: "smooth" });
-    }, 100); // Breve delay para asegurar render
-  };
+      calendarioRef.current?.scrollIntoView({ behavior: "smooth" })
+    }, 100)
+  }
 
   return (
-    <main className="min-h-screen bg-slate-50 text-[#4a4a4a]">
+    <main className="min-h-screen bg-background text-[#4a4a4a]">
       {/* HERO SECTION */}
       <section className="text-center py-20 px-4 bg-white shadow-inner">
         <h1 className="text-5xl font-bold text-[#9A3324]">Flores de Bach</h1>
@@ -33,12 +35,12 @@ export default function HomePage() {
             </Button>
           </Link>
         </div>
-        <h2 className="text-2xl font-bold text-[#9A3324] mb-3">
+        <h2 className="text-2xl font-bold text-[#9A3324] mt-8">
           Un espacio guiado por Adriana Leyva Nolasco
         </h2>
       </section>
 
-      {/* SOBRE LAS FLORES */}
+      {/* ¿QUÉ SON LAS FLORES? */}
       <section className="py-16 px-6 max-w-4xl mx-auto">
         <h2 className="text-3xl font-bold text-[#9A3324] mb-4">
           ¿Qué son las Flores de Bach?
@@ -90,7 +92,26 @@ export default function HomePage() {
       {/* GALERÍA */}
       <GaleriaFlores />
 
-      {/* CTA + MOSTRAR CALENDARIO */}
+      {/* FORMULARIO DE SÍNTOMAS */}
+      <section className="py-16 px-4 bg-white">
+        <h2 className="text-3xl font-bold text-[#9A3324] text-center mb-6">
+          ¿Cómo te sientes hoy?
+        </h2>
+        <p className="text-center text-muted-foreground max-w-xl mx-auto mb-6">
+          Selecciona los síntomas que estás experimentando y te recomendaremos una combinación especial de gotitas para acompañarte.
+        </p>
+        <FormularioSintomas />
+      </section>
+
+      {/* CATÁLOGO DE FLORES */}
+      <section className="py-16 px-6 bg-white">
+        <h2 className="text-3xl font-bold text-[#9A3324] mb-6 text-center">
+          Catálogo de Flores de Bach
+        </h2>
+        <CatalogoFlores />
+      </section>
+
+      {/* CTA AGENDAR */}
       <section
         id="agenda"
         className="text-center py-16 px-4 bg-gradient-to-br from-[#9A3324] to-[#b24d3e] text-white"
@@ -111,7 +132,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CALENDARIO VISUAL */}
+      {/* CALENDARIO DE CITAS */}
       {mostrarCalendario && (
         <section
           ref={calendarioRef}
@@ -121,5 +142,5 @@ export default function HomePage() {
         </section>
       )}
     </main>
-  );
+  )
 }
