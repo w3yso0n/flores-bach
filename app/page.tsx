@@ -7,6 +7,10 @@ import CalendarioVisual from "@/components/CalendarioVisual"
 import GaleriaFlores from "@/components/CarruselFlores"
 import CatalogoFlores from "@/components/CatalogoFlores"
 import FormularioSintomas from "@/components/FormularioSintomas"
+import HeroSection from "@/components/HeroSection"
+import FloatingFlowers from "@/components/FloatingFlowers"
+import { motion } from "framer-motion"
+import Servicios from "@/components/Servicios"
 
 export default function HomePage() {
   const [mostrarCalendario, setMostrarCalendario] = useState(false)
@@ -21,73 +25,40 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen bg-background text-[#4a4a4a]">
-      {/* HERO SECTION */}
-      <section className="text-center py-20 px-4 bg-white shadow-inner">
-        <h1 className="text-5xl font-bold text-[#9A3324]">Flores de Bach</h1>
-        <p className="mt-5 text-lg max-w-xl mx-auto leading-relaxed">
-          Equilibra tus emociones de forma natural. Conoce nuestros tratamientos
-          personalizados y reserva tu cita fácilmente.
-        </p>
-        <div className="mt-8">
-          <Link href="#agenda">
-            <Button className="bg-[#9A3324] hover:bg-[#7b271b] text-white px-6 py-2 text-lg rounded-full shadow transition-transform hover:scale-105">
-              Agendar cita
-            </Button>
-          </Link>
-        </div>
-        <h2 className="text-2xl font-bold text-[#9A3324] mt-8">
-          Un espacio guiado por Adriana Leyva Nolasco
-        </h2>
-      </section>
+  <FloatingFlowers />
+      <HeroSection />
 
       {/* ¿QUÉ SON LAS FLORES? */}
-      <section className="py-16 px-6 max-w-4xl mx-auto">
-        <h2 className="text-3xl font-bold text-[#9A3324] mb-4">
-          ¿Qué son las Flores de Bach?
-        </h2>
-        <p className="text-base leading-relaxed text-justify">
-          Las Flores de Bach son esencias naturales que ayudan a restaurar el
-          equilibrio emocional. Son seguras, suaves y eficaces, utilizadas para
-          tratar desde ansiedad, tristeza, estrés, hasta inseguridad o falta de
-          enfoque.
-        </p>
-      </section>
+      <section className="relative py-20 px-6 max-w-4xl mx-auto overflow-hidden">
+      {/* FONDO DECORATIVO OPCIONAL */}
+      <div className="absolute top-0 left-0 w-48 h-48 opacity-10 rotate-45 bg-[url('/1.jpg')] bg-no-repeat bg-contain" />
+      <div className="absolute bottom-0 right-0 w-48 h-48 opacity-10 -rotate-12 bg-[url('/flor.svg')] bg-no-repeat bg-contain" />
+
+      <motion.h2
+        className="text-4xl font-bold text-[#9A3324] mb-6 relative z-10 text-center"
+        initial={{ opacity: 0, x: -40 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.7 }}
+        viewport={{ once: true }}
+      >
+        ¿Qué son las Flores de Bach?
+      </motion.h2>
+
+      <motion.p
+        className="text-lg leading-loose text-gray-700 text-justify relative z-10"
+        initial={{ opacity: 0, x: 40 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.7, delay: 0.2 }}
+        viewport={{ once: true }}
+      >
+        Las Flores de Bach son esencias naturales utilizadas para restaurar el equilibrio emocional. 
+        Actúan de forma suave y segura, ayudando a gestionar emociones como la ansiedad, el miedo, el estrés o la tristeza. 
+        Son una herramienta terapéutica natural que acompaña procesos de transformación interna y bienestar.
+      </motion.p>
+    </section>
 
       {/* SERVICIOS */}
-      <section className="bg-[#fefefe] py-14 px-6">
-        <h2 className="text-3xl font-bold text-[#9A3324] mb-8 text-center">
-          Nuestros servicios
-        </h2>
-        <div className="grid gap-6 md:grid-cols-3">
-          {[
-            {
-              titulo: "Consultas personalizadas",
-              descripcion:
-                "Evaluación individual para elegir la mezcla de flores adecuada.",
-            },
-            {
-              titulo: "Remedios emocionales",
-              descripcion:
-                "Mezclas para manejar ansiedad, miedos, estrés o tristeza.",
-            },
-            {
-              titulo: "Acompañamiento terapéutico",
-              descripcion:
-                "Seguimiento constante para adaptar el tratamiento a tu progreso.",
-            },
-          ].map((servicio, i) => (
-            <div
-              key={i}
-              className="bg-white p-6 rounded-lg shadow hover:shadow-md transition-transform hover:scale-105"
-            >
-              <h3 className="font-semibold text-lg mb-2 text-[#9A3324]">
-                {servicio.titulo}
-              </h3>
-              <p className="text-sm text-gray-700">{servicio.descripcion}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+      <Servicios/>
 
       {/* GALERÍA */}
       <GaleriaFlores />

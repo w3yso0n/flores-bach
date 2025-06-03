@@ -1,0 +1,8 @@
+<!-- public/flor.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="#9A3324">
+  <circle cx="32" cy="32" r="6"></circle>
+  <circle cx="32" cy="10" r="8" fill-opacity="0.3"></circle>
+  <circle cx="32" cy="54" r="8" fill-opacity="0.3"></circle>
+  <circle cx="10" cy="32" r="8" fill-opacity="0.3"></circle>
+  <circle cx="54" cy="32" r="8" fill-opacity="0.3"></circle>
+</svg>
